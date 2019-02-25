@@ -1,0 +1,33 @@
+{
+  "extends": ["airbnb", "plugin:flowtype/recommended"],
+  "plugins": [
+    "import",
+    "flowtype"
+  ],
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  "rules": {
+    "camelcase": 0,
+    "no-multiple-empty-lines": [ "error", {"max":1}],
+    "jsx-a11y/anchor-is-valid": [ "error", {
+      "specialLink": [ "hrefLeft", "hrefRight" ],
+      "aspects": [ "noHref", "invalidHref", "preferButton" ]
+    }],
+    "jsx-a11y/label-has-for": [ 2, {
+      "components": [ "Label" ],
+      "required": {
+        "every": [ "id" ]
+      },
+      "allowChildren": false
+    }],
+    "max-len": [1, 120, 2, {
+      "ignorePattern": "^import\\s.+\\sfrom\\s.+$",
+      "ignoreUrls": true
+    }],
+    "semi": [2, "never"],
+    "no-confusing-arrow": 0,
+    "no-shadow": "off"
+  }
+}
