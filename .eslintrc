@@ -1,8 +1,8 @@
 {
-  "extends": ["airbnb", "plugin:flowtype/recommended"],
+  "extends": ["airbnb"],
   "plugins": [
     "import",
-    "flowtype"
+    "react"
   ],
   "env": {
     "browser": true,
