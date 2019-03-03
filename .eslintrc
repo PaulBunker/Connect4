@@ -2,12 +2,14 @@
   "extends": ["airbnb"],
   "plugins": [
     "import",
-    "react"
+    "react",
+    "babel"
   ],
   "env": {
     "browser": true,
     "jest": true
   },
+  "parser": "babel-eslint",
   "rules": {
     "camelcase": 0,
     "no-multiple-empty-lines": [ "error", {"max":1}],
