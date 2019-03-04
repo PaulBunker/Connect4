@@ -1,8 +1,14 @@
 import {
-  check4InARow, checkDecendingDiagonals, getDecendingDiagonals, getAscendingDiagonals, checkRows, checkColumns,
+  check4InARow, getDescendingDiagonals, getAscendingDiagonals, checkRows, checkColumns, checkDraw,
 } from './checkWin'
 
 import gameStates from './gameStates'
+
+describe('checks for a draw', () => {
+  it('should be a draw', () => {
+    expect(checkDraw(gameStates.numberedBoard)).toBe(false)
+  })
+})
 
 test('checks if there is 4 in a row and returns winner', () => {
   expect(check4InARow(['r', 'r', 'r', 'r'])).toBe('r')
@@ -25,7 +31,7 @@ describe('getAscendingDiagonals', () => {
   })
 })
 
-describe('getDecendingDiagonals', () => {
+describe('getDescendingDiagonals', () => {
   it('should get all the descending diagonals in a 7 x 7 board excluding diagonals less than 4 in length', () => {
     const expectedResult = [
       [22, 16, 10, 4],
@@ -36,7 +42,7 @@ describe('getDecendingDiagonals', () => {
       [46, 39, 33, 27, 21],
       [47, 40, 34, 28],
     ]
-    expect(getDecendingDiagonals(gameStates.numberedBoard)).toStrictEqual(expectedResult)
+    expect(getDescendingDiagonals(gameStates.numberedBoard)).toStrictEqual(expectedResult)
   })
 })
 

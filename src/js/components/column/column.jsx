@@ -1,9 +1,28 @@
 import React from 'react'
+import classNames from 'classnames'
 import styles from './column.scss'
 
+const colourClass = (chequer) => {
+  switch (chequer) {
+    case 'r':
+      console.log(styles.red)
+      return styles.red
+    case 'y':
+      return styles.yellow
+    default:
+      return null
+  }
+  chequer === 'r' ? styles.red : styles.yellow
+}
+
 const Column = ({ column, onColumnClick }) => (
-  <div onClick={onColumnClick}>
-    {column.map((square, index) => <div key={index} className={styles.square}>{square || 'o' }</div>)}
+  <div className={styles.column} onClick={onColumnClick}>
+    {column.map((chequer, index) => (
+      <div
+        key={index}
+        className={classNames(styles.square, colourClass(chequer))}
+      />
+    ))}
   </div>
 )
 

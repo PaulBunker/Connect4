@@ -1,4 +1,34 @@
+.column {
+  display: flex;
+  flex-direction: column-reverse;
+
+  &:hover {
+    background: #eee;
+    cursor: pointer;
+  }
+}
 .square {
-  width:30px;
-  height:30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 30px;
+  height: 30px;
+
+  &:before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #ccc;
+  }
+
+  &.red:before {
+    background-color: red;
+  }
+
+  &.yellow:before {
+    background-color: yellow;
+  }
 }

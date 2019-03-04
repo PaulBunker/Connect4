@@ -12,3 +12,5 @@ const addChequer = (gameState, column, colour) => {
   newGameState[column] = activeColumn
   return newGameState
 }
+
+export default addChequer

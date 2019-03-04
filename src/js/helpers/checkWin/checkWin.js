@@ -16,6 +16,7 @@ export const check4InARow = (array) => {
   return winner
 }
 
+// TODO: use check arrays
 export const checkColumns = (gameState) => {
   let winner
   gameState.forEach((column) => {
@@ -26,7 +27,7 @@ export const checkColumns = (gameState) => {
   })
   return winner
 }
-
+// TODO: use check arrays
 export const checkRows = (gameState) => {
   let winner
   gameState[0].forEach((_, rowNumber) => {
@@ -38,7 +39,7 @@ export const checkRows = (gameState) => {
   return winner
 }
 
-export const getDecendingDiagonals = (gameState) => {
+export const getDescendingDiagonals = (gameState) => {
   const diagonals = []
   for (let index = 3; index < gameState.length; index++) {
     const diagonal = []
@@ -87,7 +88,22 @@ export const getAscendingDiagonals = (gameState) => {
   return diagonals
 }
 
-const checkForAWin = (gameState) => {
-  const columnWinner = checkColumns(gameState)
-  const rowWinner = checkRows(gameState)
+const checkArrays = (arrays) => {
+  let winner
+  arrays.forEach((column) => {
+    const didWin = check4InARow(column)
+    if (didWin) {
+      winner = didWin
+    }
+  })
+  return winner
 }
+
+export const checkDraw = gameState => ([].concat(...gameState).indexOf(null) === -1) ? false : null
+
+// TODO refactor
+export const checkForAWin = gameState => checkColumns(gameState)
+  || checkRows(gameState)
+  || checkArrays(getAscendingDiagonals(gameState))
+  || checkArrays(getDescendingDiagonals(gameState))
+  || checkDraw(gameState)
