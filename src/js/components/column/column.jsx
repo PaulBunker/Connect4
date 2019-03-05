@@ -5,7 +5,6 @@ import styles from './column.scss'
 const colourClass = (chequer) => {
   switch (chequer) {
     case 'r':
-      console.log(styles.red)
       return styles.red
     case 'y':
       return styles.yellow
