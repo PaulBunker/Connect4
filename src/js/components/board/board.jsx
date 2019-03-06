@@ -3,7 +3,7 @@ import Column from '../column/column'
 import styles from './board.scss'
 import addChequer from '../../helpers/addChequer/addChequer'
 import { checkForAWin } from '../../helpers/checkWin/checkWin'
-import minimax from '../../helpers/minimax/minimax'
+import Worker from '../../worker/Worker.worker'
 
 const RED = 'r'
 const YELLOW = 'y'
@@ -19,6 +19,14 @@ class Board extends Component {
     }
   }
 
+  componentDidMount() {
+    this.w = new Worker()
+    this.w.addEventListener('message', (event) => {
+      const column = event.data
+      this.computerMove(column)
+    })
+  }
+
   onColumnClick = (columnNumber) => {
     const { board, player } = this.state
     const newBoard = addChequer(board, columnNumber, player)
@@ -27,16 +35,16 @@ class Board extends Component {
       board: newBoard,
       player: player === RED ? YELLOW : RED,
       winner: didWin,
-    }, this.computerMove)
+    }, () => this.w.postMessage(this.state))
   };
 
-  computerMove() {
+  computerMove(column) {
     const {
       board, player, winner,
     } = this.state
 
     if (player === RED && !winner) {
-      const newBoard = addChequer(board, minimax(board, 0, player), player)
+      const newBoard = addChequer(board, column, player)
       const didWin = checkForAWin(newBoard)
       this.setState({
         board: newBoard,

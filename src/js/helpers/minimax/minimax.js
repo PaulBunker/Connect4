@@ -17,7 +17,7 @@ const maxItem = data => data.reduce((a, b) => a.value >= b.value ? a : b, {})
 
 const minimax = (board, depth, player) => {
   const didWin = checkForAWin(board)
-  if (didWin === null && depth < 6) {
+  if (didWin === null && depth < 8) {
     const values = []
 
     for (let columnNumber = 0; columnNumber < board.length; columnNumber++) {

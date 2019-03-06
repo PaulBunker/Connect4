@@ -5,9 +5,16 @@ const localIdentName = process.env.NODE_ENV === 'production' ? '[hash:base64:5]'
 
 module.exports = {
   entry: './src/js/index.js',
-
+  // output: {
+  //   filename: '[name].bundle.js',
+  //   path: path.resolve(__dirname, 'dist'),
+  // },
   module: {
     rules: [
+      {
+        test: /\.worker\.js$/,
+        use: { loader: 'worker-loader' },
+      },
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
