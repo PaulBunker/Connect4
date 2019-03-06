@@ -4,13 +4,20 @@ import addChequer from '../addChequer/addChequer'
 const RED = 'r'
 const YELLOW = 'y'
 
+const shuffle = (a) => {
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]]
+  }
+  return a
+}
+
 const minItem = data => data.reduce((a, b) => a.value <= b.value ? a : b, {})
 const maxItem = data => data.reduce((a, b) => a.value >= b.value ? a : b, {})
 
 const minimax = (board, depth, player) => {
   const didWin = checkForAWin(board)
-
-  if (didWin === null && depth < 8) {
+  if (didWin === null && depth < 6) {
     const values = []
 
     for (let columnNumber = 0; columnNumber < board.length; columnNumber++) {
@@ -26,13 +33,13 @@ const minimax = (board, depth, player) => {
     }
 
     if (player === RED) {
-      const { columnNumber, value } = maxItem(values)
+      const { columnNumber, value } = maxItem(shuffle(values))
       if (depth === 0) {
         return columnNumber
       }
       return value
     }
-    const { columnNumber, value } = minItem(values)
+    const { columnNumber, value } = minItem(shuffle(values))
     if (depth === 0) {
       return columnNumber
     }
@@ -42,7 +49,7 @@ const minimax = (board, depth, player) => {
   } if (didWin === RED) {
     return 9999 - depth
   }
-  return 3
+  return 0
 }
 
 export default minimax

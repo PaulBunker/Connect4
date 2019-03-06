@@ -15,7 +15,7 @@ class Board extends Component {
     super()
     this.state = {
       board: create2DArray(),
-      player: RED,
+      player: YELLOW,
     }
   }
 
@@ -35,7 +35,7 @@ class Board extends Component {
       board, player, winner,
     } = this.state
 
-    if (player === YELLOW && !winner) {
+    if (player === RED && !winner) {
       const newBoard = addChequer(board, minimax(board, 0, player), player)
       const didWin = checkForAWin(newBoard)
       this.setState({
