@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import Column from '../column/column.jsx'
+import Column from '../column/column'
 import styles from './board.scss'
 import addChequer from '../../helpers/addChequer/addChequer'
 import { checkForAWin } from '../../helpers/checkWin/checkWin'
+import minimax from '../../helpers/minimax/minimax'
 
 const RED = 'r'
 const YELLOW = 'y'

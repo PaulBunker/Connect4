@@ -1,10 +1,11 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const path = require('path')
-const localIdentName = process.env.NODE_ENV === 'production' ? '[hash:base64:5]' : '[name]__[local]__[hash:base64:3]'
 
+const localIdentName = process.env.NODE_ENV === 'production' ? '[hash:base64:5]' : '[name]__[local]__[hash:base64:3]'
 
 module.exports = {
   entry: './src/js/index.js',
+
   module: {
     rules: [
       {
@@ -49,6 +50,7 @@ module.exports = {
       },
     ],
   },
+  resolve: { extensions: ['.js', '.jsx'] },
   plugins: [
     new HtmlWebPackPlugin({
       template: './src/index.html',
