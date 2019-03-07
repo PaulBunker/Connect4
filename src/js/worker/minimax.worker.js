@@ -1,8 +1,8 @@
-export default () => {
-  self.minimax = require('../helpers/minimax/minimax') // eslint-disable-line no-restricted-globals
-  self.addEventListener('message', (event) => { // eslint-disable-line no-restricted-globals
-    if (!event) return
-    const { board, player } = event
-    postMessage(minimax(board, 0, player))
-  })
-}
+import minimax from '../helpers/minimax/minimax'
+
+self.addEventListener('message', (event) => {
+  if (event.data) {
+    const { board, player } = event.data
+    self.postMessage(minimax(board, 0, player))
+  }
+})

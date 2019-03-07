@@ -15,20 +15,27 @@ const shuffle = (a) => {
 const minItem = data => data.reduce((a, b) => a.value <= b.value ? a : b, {})
 const maxItem = data => data.reduce((a, b) => a.value >= b.value ? a : b, {})
 
-const minimax = (board, depth, player) => {
+const minimax = (board, depth, player, alpha = -10000, beta = 10000) => {
   const didWin = checkForAWin(board)
   if (didWin === null && depth < 8) {
     const values = []
-
     for (let columnNumber = 0; columnNumber < board.length; columnNumber++) {
       const column = board[columnNumber]
       if (column[column.length - 1] === null) {
         const newGrid = addChequer(board, columnNumber, player)
-        const value = minimax(newGrid, depth + 1, (player === RED) ? YELLOW : RED)
+        const value = minimax(newGrid, depth + 1, (player === RED) ? YELLOW : RED, alpha, beta)
         values.push({
           columnNumber,
           value,
         })
+        if (player === RED) {
+          alpha = Math.max(alpha, value)
+        } else {
+          beta = Math.min(value, beta)
+        }
+        if (alpha > beta) {
+          break
+        }
       }
     }
 

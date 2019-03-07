@@ -11,11 +11,13 @@ const colourClass = (chequer) => {
     default:
       return null
   }
-  chequer === 'r' ? styles.red : styles.yellow
 }
 
 const Column = ({ column, onColumnClick }) => (
-  <div className={styles.column} onClick={onColumnClick}>
+  <div
+    className={styles.column}
+    onClick={onColumnClick}
+  >
     {column.map((chequer, index) => (
       <div
         key={index}

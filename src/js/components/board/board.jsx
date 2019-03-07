@@ -3,12 +3,12 @@ import Column from '../column/column'
 import styles from './board.scss'
 import addChequer from '../../helpers/addChequer/addChequer'
 import { checkForAWin } from '../../helpers/checkWin/checkWin'
-import Worker from '../../worker/Worker.worker'
+import Worker from '../../worker/minimax.worker'
 
 const RED = 'r'
 const YELLOW = 'y'
 
-export const create2DArray = (cols = 7, rows = 7) => [...Array(cols)].map(() => Array(rows).fill(null))
+export const create2DArray = (cols = 7, rows = 6) => [...Array(cols)].map(() => Array(rows).fill(null))
 
 class Board extends Component {
   constructor() {
@@ -55,15 +55,15 @@ class Board extends Component {
   }
 
   render() {
-    const { board, winner } = this.state
+    const { board, winner, player } = this.state
     return (
       <div className={styles.container}>
-        {winner
-        && (
-        <div className={styles.winnerOverlay}>
-          <p>{`Winner ${winner}`}</p>
-        </div>
+        {(winner || player === RED) && (
+          <div className={styles.overlay}>
+            <p>{winner ? `Winner ${winner}` : 'Thinking...' }</p>
+          </div>
         )
+
       }
         <div className={styles.board}>
           {board.map((column, index) => (

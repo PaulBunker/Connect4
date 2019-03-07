@@ -21,3 +21,10 @@ describe('test minimax algorithm', () => {
     expect(minimax(board2, 0, 'r')).toBe(2)
   })
 })
+
+const board = [
+  ['r', 'r', 'r', null],
+  [null, null, null, null],
+  ['y', 'y', 'y', null],
+]
+
