@@ -60,7 +60,7 @@ class Board extends Component {
       <div className={styles.container}>
         {(winner || player === RED) && (
           <div className={styles.overlay}>
-            <p>{winner ? `Winner ${winner}` : 'Thinking...' }</p>
+            <p className={styles[winner]}>{winner ? `${winner === RED ? 'Red' : 'Yellow'} Wins` : 'Thinking...' }</p>
           </div>
         )
 

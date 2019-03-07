@@ -1,11 +1,13 @@
+@import '../css/colours';
+
 .container {
-  display: flex;
+  display: inline-flex;
   justify-content: center;
+  position: relative;
 }
 
 .board {
-  display:flex;
-  position: relative; 
+  display: flex;
 }
 
 .overlay {
@@ -22,7 +24,15 @@
     text-align: center;
     font-size: 40px;
     width:100%;
-    color: #444;
-    background-color: rgba(100,100,100,.5)
+    color: $blue;
+
+    &.r {
+      color: $red;
+      background-color: rgba($blue, 0.9);
+    }
+    &.y {
+      color: $yellow;
+      background-color: rgba($blue, 0.9);
+    }
   }
 }

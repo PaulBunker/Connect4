@@ -22,9 +22,3 @@ describe('test minimax algorithm', () => {
   })
 })
 
-const board = [
-  ['r', 'r', 'r', null],
-  [null, null, null, null],
-  ['y', 'y', 'y', null],
-]
-
