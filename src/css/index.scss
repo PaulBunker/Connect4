@@ -1,0 +1,13 @@
+@import 'colours';
+
+html, body {
+  font-family: sans-serif;
+}
+
+header {
+  font-family: 'Sniglet', cursive;
+  font-size: 70px;
+  line-height: 1.6em;
+  color: $blue-secondary;
+  text-align: center;
+}

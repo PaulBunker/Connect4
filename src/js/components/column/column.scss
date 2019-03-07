@@ -1,9 +1,11 @@
+@import '../css/colours'; 
+
 .column {
   display: flex;
   flex-direction: column-reverse;
   border: none;
   padding: 0;
-  
+
 
   &:hover {
     background: #eee;
@@ -28,10 +30,10 @@
   }
 
   &.red:before {
-    background-color: red;
+    background-color: $red;
   }
 
   &.yellow:before {
-    background-color: yellow;
+    background-color: $yellow;
   }
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import styles from '../css/index.scss'
 
 import Board from './components/board/board.jsx'
 

@@ -1,9 +1,11 @@
 .container {
-
+  display: flex;
+  justify-content: center;
 }
 
 .board {
-  display:flex; 
+  display:flex;
+  position: relative; 
 }
 
 .overlay {
