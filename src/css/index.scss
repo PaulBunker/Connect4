@@ -2,6 +2,7 @@
 
 html, body {
   font-family: 'Sniglet', cursive;
+  margin: 0;
 }
 
 main {
@@ -15,37 +16,4 @@ header {
   line-height: 1.6em;
   color: $blue-secondary;
   text-align: center;
-}
-
-:global {
-  .splitting .char {
-    animation: bounce 1s cubic-bezier(.5, 0, .5, 1) both;
-    animation-delay: calc(60ms * var(--char-index));
-  }
-}
-
-@keyframes bounce {
-  from,
-  20%,
-  53%,
-  80%,
-  to {
-    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    transform: translate3d(0, 0, 0);
-  }
-
-  40%,
-  43% {
-    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-    transform: translate3d(0, -30px, 0);
-  }
-
-  70% {
-    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-    transform: translate3d(0, -15px, 0);
-  }
-
-  90% {
-    transform: translate3d(0, -4px, 0);
-  }
 }
