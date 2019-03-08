@@ -7,7 +7,7 @@
   "scripts": {
     "predeploy": "webpack --mode production",
     "deploy": "npm run build && gh-pages -d dist",
-    "start": "webpack-dev-server --open --mode development",
+    "start": "webpack-dev-server --mode development",
     "build": "webpack --mode production",
     "test": "jest --coverage",
     "test:watch": "jest --watch"
@@ -51,6 +51,7 @@
   "dependencies": {
     "classnames": "^2.2.6",
     "react": "^16.8.3",
-    "react-dom": "^16.8.3"
+    "react-dom": "^16.8.3",
+    "splitting": "^1.0.6"
   }
 }

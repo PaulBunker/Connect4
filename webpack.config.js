@@ -32,6 +32,7 @@ module.exports = {
       },
       {
         test: /\.s?css$/,
+        exclude: /node_modules/,
         use: [
           {
             loader: 'style-loader',
@@ -46,6 +47,27 @@ module.exports = {
               importLoaders: 1,
               localIdentName,
             },
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              includePaths: [path.resolve('src', 'node_modules')],
+            },
+          },
+        ],
+      },
+      {
+        test: /\.s?css$/,
+        exclude: /src/,
+        use: [
+          {
+            loader: 'style-loader',
+            options: {
+              singleton: true,
+            },
+          },
+          {
+            loader: 'css-loader',
           },
           {
             loader: 'sass-loader',

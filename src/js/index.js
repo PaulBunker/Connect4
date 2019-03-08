@@ -1,8 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import styles from '../css/index.scss'
+import Splitting from 'splitting'
+import 'splitting/dist/splitting.css'
+import '../css/index.scss'
+import Board from './components/board/board'
 
-import Board from './components/board/board.jsx'
+Splitting()
 
 const wrapper = document.getElementById('connect4')
 wrapper ? ReactDOM.render(<Board />, wrapper) : false

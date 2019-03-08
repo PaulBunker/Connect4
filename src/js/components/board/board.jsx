@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import classNames from 'classnames'
 import Column from '../column/column'
 import styles from './board.scss'
 import addChequer from '../../helpers/addChequer/addChequer'
@@ -59,7 +60,7 @@ class Board extends Component {
     return (
       <div className={styles.container}>
         {(winner || player === RED) && (
-          <div className={styles.overlay}>
+          <div className={classNames(styles.overlay, { [styles.pulse]: !winner })}>
             <p className={styles[winner]}>{winner ? `${winner === RED ? 'Red' : 'Yellow'} Wins` : 'Thinking...' }</p>
           </div>
         )
