@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import classNames from 'classnames'
 import Column from '../column/column'
 import styles from './board.scss'
@@ -17,6 +17,7 @@ class Board extends Component {
     this.state = {
       board: create2DArray(),
       player: YELLOW,
+      difficulty: 7,
     }
   }
 
@@ -31,6 +32,9 @@ class Board extends Component {
   onColumnClick = (columnNumber) => {
     const { board, player } = this.state
     const newBoard = addChequer(board, columnNumber, player)
+    if (!newBoard) {
+      return null
+    }
     const didWin = checkForAWin(newBoard)
     this.setState({
       board: newBoard,
@@ -56,27 +60,42 @@ class Board extends Component {
   }
 
   render() {
-    const { board, winner, player } = this.state
+    const {
+      board, winner, player, difficulty,
+    } = this.state
     return (
-      <div className={styles.container}>
-        {(winner || player === RED) && (
-          <div className={classNames(styles.overlay, { [styles.pulse]: !winner })}>
-            <p className={styles[winner]}>{winner ? `${winner === RED ? 'Red' : 'Yellow'} Wins` : 'Thinking...' }</p>
+      <Fragment>
+        <div className={styles.container}>
+          {(winner || player === RED) && (
+            <div className={classNames(styles.overlay, { [styles.pulse]: !winner })}>
+              <p className={styles[winner]}>{winner ? `${winner === RED ? 'Red' : 'Yellow'} Wins` : 'Thinking...' }</p>
+            </div>
+          )
+
+        }
+          <div className={styles.board}>
+            {board.map((column, index) => (
+              <Column
+                key={index}
+                column={column}
+                onColumnClick={() => this.onColumnClick(index)}
+              />
+            ))}
           </div>
-        )
-
-      }
-        <div className={styles.board}>
-          {board.map((column, index) => (
-            <Column
-              key={index}
-              column={column}
-              onColumnClick={() => this.onColumnClick(index)}
-            />
-          ))}
         </div>
-      </div>
+        <label className={styles.difficulty} htmlFor="difficulty">
+          {`Difficulty - ${difficulty}`}
+        </label>
+        <input
+          id="difficulty"
+          type="range"
+          min="0"
+          max="10"
+          value={difficulty}
+          onChange={(e) => { this.setState({ difficulty: e.target.value }) }}
+        />
 
+      </Fragment>
     )
   }
 }

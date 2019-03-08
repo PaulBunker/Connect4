@@ -16,4 +16,9 @@ header {
   line-height: 1.6em;
   color: $blue-secondary;
   text-align: center;
+
+  @media only screen and (max-width: 450px) {
+    font-size: 16vw;
+  }
+
 }

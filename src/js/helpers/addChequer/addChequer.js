@@ -1,6 +1,7 @@
 const addChequer = (gameState, column, colour) => {
   const newGameState = [...gameState]
   let activeColumn = newGameState[column]
+  if (activeColumn.indexOf(null) === -1) return false
   let done
   activeColumn = activeColumn.map((position) => {
     if (!position && !done) {

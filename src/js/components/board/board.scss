@@ -35,7 +35,18 @@
       animation: jackInTheBox 1s;
       text-shadow: 0px 0px 3px $blue-secondary, 1px 1px 2px $blue-secondary, -1px -1px 2px $blue-secondary;
     }
+
+    @media only screen and (max-width: 450px) {
+      font-size: 12.5vw;
+    }
   }
+}
+
+.difficulty {
+  line-height: 1.6em;
+  font-size: 30px;
+  color: $blue-secondary;
+  display: block;
 }
 
 @keyframes jackInTheBox {
@@ -74,5 +85,5 @@
 }
 
 .pulse {
-  animation: pulse 1s infinite 2s;
+  animation: pulse 1s infinite;
 }
