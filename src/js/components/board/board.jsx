@@ -5,17 +5,16 @@ import styles from './board.scss'
 import addChequer from '../../helpers/addChequer/addChequer'
 import { checkForAWin } from '../../helpers/checkWin/checkWin'
 import Worker from '../../worker/minimax.worker'
+import crateBoard from '../../helpers/createBoard/createBoard'
 
 const RED = 'r'
 const YELLOW = 'y'
-
-export const create2DArray = (cols = 7, rows = 6) => [...Array(cols)].map(() => Array(rows).fill(null))
 
 class Board extends Component {
   constructor() {
     super()
     this.state = {
-      board: create2DArray(),
+      board: crateBoard(),
       player: YELLOW,
       difficulty: 7,
     }
