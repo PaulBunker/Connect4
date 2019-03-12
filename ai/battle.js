@@ -5,30 +5,13 @@ import initialState from '../src/js/helpers/createBoard/createBoard'
 import addChequer from '../src/js/helpers/addChequer/addChequer'
 import minimax from '../src/js/helpers/minimax/minimax'
 import { checkForAWin } from '../src/js/helpers/checkWin/checkWin'
+import getModelPrediction from '../src/js/helpers/getModelPrediction/getModelPrediction'
 
 const getMove = (player, gameState, model) => {
   if (player === 'y') {
-    const preds = model.predict(tf.tensor([initialState()])).dataSync()
-    const list = []
-    preds.forEach((pred, i) => {
-      list.push({
-        column: i,
-        pred,
-      })
-    })
-    const orderedPredictions = [...list].sort((a, b) => {
-      if (a.pred < b.pred) { return 1 }
-      if (a.pred > b.pred) { return -1 }
-      return 0
-    })
-    for (let index = 0; index < orderedPredictions.length; index++) {
-      const prediction = orderedPredictions[index]
-      if (gameState[prediction.column].indexOf(null) !== -1) {
-        return prediction.column
-      }
-    }
+    return getModelPrediction(model, player, gameState)
   }
-  return minimax(gameState, 0, player, -10000, 10000, 3)
+  return minimax(gameState, 0, player, -10000, 10000, 2)
 }
 
 const battle = (model) => {
@@ -56,7 +39,6 @@ const battle = (model) => {
         } else {
           games.draws++
         }
-        console.log(newGamestate)
         playing = false
       } else {
         gameState = newGamestate
@@ -67,6 +49,6 @@ const battle = (model) => {
   console.log(games)
 }
 
-tf.loadLayersModel(`file://${path.join(__dirname, 'models', 'model.json')}`).then((model) => {
+tf.loadLayersModel(`file://${path.join(__dirname, 'models', '3', 'model.json')}`).then((model) => {
   battle(model)
 })
