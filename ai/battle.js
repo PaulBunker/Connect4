@@ -49,6 +49,6 @@ const battle = (model) => {
   console.log(games)
 }
 
-tf.loadLayersModel(`file://${path.join(__dirname, 'models', '3', 'model.json')}`).then((model) => {
+tf.loadLayersModel(`file://${path.join(__dirname, 'models', '8', 'model.json')}`).then((model) => {
   battle(model)
 })

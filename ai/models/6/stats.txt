@@ -1,0 +1,2 @@
+1 vs minimax2
+{ modelWins: 2118, minimaxWins: 7869, draws: 13 }

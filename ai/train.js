@@ -18,7 +18,7 @@ const trainingData = JSON.parse(fs.readFileSync('data.json'))
 // })
 
 // model.add(input)
-
+// model.add(tf.layers.dense({ units: 84, activation: 'tanh' }))
 // model.add(tf.layers.flatten())
 // model.add(output)
 
@@ -38,7 +38,7 @@ const config = {
   epochs: 3,
 }
 
-tf.loadLayersModel(`file://${path.join(__dirname, 'models', '2', 'model.json')}`).then((model) => {
+tf.loadLayersModel(`file://${path.join(__dirname, 'models', '7', 'model.json')}`).then((model) => {
   model.compile({
     optimizer,
     loss: 'categoricalCrossentropy',
@@ -46,9 +46,15 @@ tf.loadLayersModel(`file://${path.join(__dirname, 'models', '2', 'model.json')}`
   })
   model.fit(trainingBoards, trainingWinners, config).then((info) => {
     console.log('Final accuracy', info.history.acc)
-    model.save(`file://${path.join(__dirname, 'models', '3')}`).then(() => {
+    model.save(`file://${path.join(__dirname, 'models', '8')}`).then(() => {
       console.log('Successfully saved the artifacts.')
     })
   })
 })
 
+// model.fit(trainingBoards, trainingWinners, config).then((info) => {
+//   console.log('Final accuracy', info.history.acc)
+//   model.save(`file://${path.join(__dirname, 'models', '4')}`).then(() => {
+//     console.log('Successfully saved the artifacts.')
+//   })
+// })

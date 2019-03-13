@@ -57,6 +57,6 @@ const playGames = (model) => {
   writeTheFile(JSON.stringify(data))
 }
 
-tf.loadLayersModel(`file://${path.join(__dirname, 'models', '2', 'model.json')}`).then((model) => {
+tf.loadLayersModel(`file://${path.join(__dirname, 'models', '7', 'model.json')}`).then((model) => {
   playGames(model)
 })
