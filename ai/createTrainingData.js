@@ -12,7 +12,7 @@ const getMove = (player, gameState, model) => {
   if (player === 'y') {
     return getModelPrediction(model, player, gameState)
   }
-  return minimax(gameState, 0, player, -10000, 10000, 2)
+  return minimax(gameState, 0, player, -10000, 10000, 1)
 }
 
 const writeTheFile = (data) => {

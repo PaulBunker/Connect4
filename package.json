@@ -13,7 +13,8 @@
     "test:watch": "jest --watch",
     "data": "babel-node ./ai/createTrainingData",
     "train": "babel-node ./ai/train",
-    "battle": "babel-node ./ai/battle"  
+    "battle": "babel-node ./ai/battle",
+    "mega": "babel-node ./ai/megaTrain/megaTrain"
   },
   "jest": {
     "collectCoverageFrom": [
