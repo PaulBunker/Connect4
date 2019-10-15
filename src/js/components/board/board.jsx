@@ -4,7 +4,8 @@ import Column from '../column/column'
 import styles from './board.scss'
 import addChequer from '../../helpers/addChequer/addChequer'
 import { checkForAWin } from '../../helpers/checkWin/checkWin'
-import Worker from '../../worker/minimax.worker'
+// import Worker from '../../worker/minimax.worker'
+import Worker from '../../worker/monteCarlo.worker'
 import crateBoard from '../../helpers/createBoard/createBoard'
 
 const RED = 'r'
@@ -82,7 +83,7 @@ class Board extends Component {
             ))}
           </div>
         </div>
-        <label className={styles.difficulty} htmlFor="difficulty">
+        {/* <label className={styles.difficulty} htmlFor="difficulty">
           {`Difficulty - ${difficulty}`}
         </label>
         <input
@@ -92,7 +93,7 @@ class Board extends Component {
           max="10"
           value={difficulty}
           onChange={(e) => { this.setState({ difficulty: e.target.value }) }}
-        />
+        /> */}
 
       </Fragment>
     )
