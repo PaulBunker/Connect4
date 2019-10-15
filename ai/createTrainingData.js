@@ -41,7 +41,6 @@ const playGames = (model) => {
       if (didWin || didWin === false) {
         // TODO handle draw
         if (didWin) {
-          data.boards.push(sanitizeBoard(player, gameState))
           const winner = [0, 0, 0, 0, 0, 0, 0]
           winner[column] = 1
           data.winners.push(winner)

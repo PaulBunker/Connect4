@@ -1,7 +1,7 @@
 import minimax from '../../src/js/helpers/minimax/minimax'
 import getModelPrediction from '../../src/js/helpers/getModelPrediction/getModelPrediction'
 
-export default class GetPlyer {
+export default class GetPlayer {
   constructor(model) {
     if (model) {
       this.model = model
@@ -17,6 +17,6 @@ export default class GetPlyer {
 
   getMinMaxMove = (gameState, playerToken) => (
     // Math.floor(Math.random() * 7)
-    minimax(gameState, 0, playerToken, -10000, 10000, 2)
+    minimax(gameState, 0, playerToken, -10000, 10000, 10)
   )
 }
